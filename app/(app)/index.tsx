@@ -1,10 +1,11 @@
-import { useAuthStore } from '../../src/state/useAuthStore';
-import { Screen } from '../../src/components/primitives/Screen';
-import { Stack } from '../../src/components/primitives/Stack';
-import { Text } from '../../src/components/primitives/Text';
-import { EmptyState } from '../../src/components/primitives/EmptyState';
-import { StyledButton } from '../../src/components/StyledButton';
+import { useAuthStore } from '@/state/useAuthStore';
+import { Screen } from '@/components/primitives';
+import { Stack } from '@/components/primitives';
+import { Text } from '@/components/primitives';
+import { EmptyState } from '@/components/primitives';
+import { StyledButton } from '@/components/StyledButton';
 import {Badge} from "@/components/primitives";
+import {router} from "expo-router";
 
 export default function HomeScreen() {
   const { user, logout } = useAuthStore();
@@ -23,6 +24,11 @@ export default function HomeScreen() {
         />
         <StyledButton label="Log out" onPress={logout} variant="secondary" />
       </Stack>
+      <StyledButton
+          label="Test button: back to splash screen"
+          variant="secondary"
+          onPress={() => router.push('/splash')}
+      />
     </Screen>
   );
 }
