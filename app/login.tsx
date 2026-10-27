@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { router } from 'expo-router';
-import { useAuthStore } from '../src/state/useAuthStore';
-import { InputField } from '../src/components/primitives/InputField';
-import { StyledButton } from '../src/components/StyledButton';
-import { Stack } from '../src/components/primitives/Stack';
-import { Text } from '../src/components/primitives/Text';
+import { Link, router} from 'expo-router';
+import { useAuthStore } from '@/state/useAuthStore';
+import { InputField } from '@/components/primitives';
+import { StyledButton } from '@/components/StyledButton';
+import { Stack } from '@/components/primitives';
+import { Text } from '@/components/primitives';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
@@ -48,11 +48,21 @@ export default function LoginScreen() {
           isLoading={isLoading}
           testID="login-button"
         />
+        <Link href="/register" style={styles.link} testID="to-register">
+          No account yet? Let's sign up
+        </Link>
+        <Link href="/comingsoon" style={styles.link} testID="forgor-password">
+          Wupsi i forgot my password
+        </Link>
+        <Link href="/comingsoon" style={styles.link} testID="forgor-username">
+          Upsi i forgot my username
+        </Link>
       </Stack>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: { flex: 1, justifyContent: 'center' },
+  link: {textAlign: "center", textDecorationLine: 'underline'}
 });
