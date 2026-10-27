@@ -30,8 +30,8 @@ export function StyledButton({
 }
 
 const styles = StyleSheet.create({
-  base: { alignItems: 'center', justifyContent: 'center' },
-  primary: {},
-  secondary: {},
-  disabled: {},
+  base: { alignItems: 'center', justifyContent: 'center', paddingVertical: 12, borderRadius: 8, minHeight: 46 },
+  primary: { backgroundColor: '#E5E7EB', borderWidth: 1, borderColor: '#6B7280' },
+  secondary: { backgroundColor: 'transparent', borderWidth: 1, borderColor: '#9CA3AF' },
+  disabled: { opacity: 0.6 },
 });
