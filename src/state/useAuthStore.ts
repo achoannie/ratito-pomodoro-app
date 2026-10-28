@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { login as loginService, logout as logoutService } from '../services/authService';
+import { login as loginService, logout as logoutService, register as registerService } from '../services/authService';
 import type { User } from '../types/User';
 
 interface AuthState {
@@ -7,6 +7,7 @@ interface AuthState {
   isAuthenticated: boolean;
   isLoading: boolean;
   login: (email: string, password: string) => Promise<void>;
+  register: (name: string, email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
 }
 
@@ -18,6 +19,16 @@ export const useAuthStore = create<AuthState>((set) => ({
     set({ isLoading: true });
     try {
       const user = await loginService(email, password);
+      set({ user, isAuthenticated: true, isLoading: false });
+    } catch (error) {
+      set({ isLoading: false });
+      throw error;
+    }
+  },
+  register: async (name, email, password)  => {
+    set({ isLoading: true });
+    try {
+      const user = await registerService(name, email, password);
       set({ user, isAuthenticated: true, isLoading: false });
     } catch (error) {
       set({ isLoading: false });
