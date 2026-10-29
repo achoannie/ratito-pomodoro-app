@@ -13,5 +13,15 @@ export const PETS = {
             sad: require('../../assets/pets/perrito/perrito_idle.gif'),
         } satisfies Record<Mood, Pet>,
     },
+    michi: {
+        name: 'Michi',
+        gifs: {
+            idle: require('../../assets/pets/michi/michi_idle.gif'),
+            focus: require('../../assets/pets/michi/michi_idle.gif'),
+            resting: require('../../assets/pets/michi/michi_idle.gif'),
+            happy: require('../../assets/pets/michi/michi_idle.gif'),
+            sad: require('../../assets/pets/michi/michi_idle.gif'),
+        } satisfies Record<string, Pet>,
+    }
 };
 export type PetId = keyof typeof PETS;
