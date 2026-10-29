@@ -1,33 +1,58 @@
 import {useEffect, useRef, useState} from "react";
 import {Stack} from "@/components/primitives";
 import {Image} from "expo-image";
-import {View, StyleSheet, ScrollView, Pressable, Text} from "react-native";
+import {View, StyleSheet, ScrollView, Pressable, Text, Animated, Easing, Platform} from "react-native";
 import {Mood, PetId, PETS} from "@/pets/pets";
 import { colors, fonts } from "@/theme/theme";
 import {SideMenu} from "@/components/SideMenu";
 import {RText} from "@/components/ratito/RText";
 import { StrawberryCounter } from '@/components/ratito/StrawberryCounter';
 
-const heartFull = require('../../assets/icons/heart_full.png');
+const CATEGORIES = ['Study', 'Work', 'Read'];
+const DURATION = [25, 30, 60, 90];
+const PET_IDS = Object.keys(PETS) as PetId[];
+type Status = 'idle' | 'paused' | 'running';
+type Reaction = 'happy' | 'sad' | null;
+
 const heartEmpty = require('../../assets/icons/heart_empty.png');
+const heartFull = require('../../assets/icons/heart_full.png');
+function WavingHeartRow({full, delay}: {full: boolean, delay: number}) {
+    const bob = useRef(new Animated.Value(0)).current;
+    useEffect(() => {
+        if (!full) return;
+        const wave = Animated.loop(
+            Animated.sequence([
+                Animated.delay(delay),
+                Animated.timing(bob, {toValue: 1, duration: 600, easing: Easing.inOut(Easing.sin), useNativeDriver: Platform.OS !== 'web'}),
+                Animated.timing(bob, {toValue: 0, duration: 600, easing: Easing.inOut(Easing.sin), useNativeDriver: Platform.OS !== 'web'}),
+                Animated.delay(1200),
+            ]),
+        );
+        wave.start();
+        return () => wave.stop();
+    }, [full, delay, bob]);
+    const translateY = bob.interpolate({inputRange: [0,1], outputRange: [0,-4]});
+
+    return (
+        <Animated.View style={{ transform: [{ translateY }] }}>
+            <Image source={full ? heartFull : heartEmpty} style={{width: 32, height: 32  }} />
+        </Animated.View>
+    )
+}
 function Hearts({ level, max = 5 }: { level: number; max?: number }) {
     return (
         <View style={{ flexDirection: 'row', gap: 4 }}>
             {Array.from({ length: max }, (_, i) => (
-                <Image
+                <WavingHeartRow
                     key={i}
-                    source={i < level ? heartFull : heartEmpty}
-                    style={{ width: 32, height: 32 }}
+                    full={i<level}
+                    delay={i*200}
                 />
             ))}
         </View>
     );
 }
 
-const CATEGORIES = ['Study', 'Work', 'Read'];
-const DURATION = [25, 30, 60, 90];
-type Status = 'idle' | 'paused' | 'running';
-type Reaction = 'happy' | 'sad' | null;
 
 // 1500 → "25:00"
 const formatTime = (seconds: number) => {
@@ -46,7 +71,6 @@ export default function HomeScreen() {
     const [petId] = useState<PetId>('michi'); //default pet, can change later
     const endAt = useRef(0);
     const pet = PETS[petId];
-
 
     const mood: Mood =
         status === 'running' ? 'focus' :
