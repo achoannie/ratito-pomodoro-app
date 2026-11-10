@@ -1,12 +1,12 @@
 {
-  "name": "UCLL App",
-  "short_name": "UCLL",
-  "description": "UCLL mobile starter app",
+  "name": "Ratito",
+  "short_name": "Ratito",
+  "description": "A cozy pixel animal themes focus timer, so you never have to study alone.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#fffdef",
-  "theme_color": "#fffdef",
+  "background_color": "#F3E5BE",
+  "theme_color": "#F3E5BE",
   "orientation": "portrait",
   "icons": [
     {

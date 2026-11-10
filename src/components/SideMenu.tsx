@@ -1,9 +1,9 @@
 import {Href, router} from "expo-router";
 import { useRef, useEffect} from "react";
-import { colors } from "@/theme/theme";
+import {colors, textStyles} from "@/theme/theme";
 import { Image } from 'expo-image';
-import {StyleSheet, Animated, Modal, Pressable, View, Platform, ImageSourcePropType} from "react-native";
-import {RText} from "@/components/ratito/RText";
+import {StyleSheet, Animated, Modal, Pressable, View, Platform, ImageSourcePropType, Text} from "react-native";
+
 import {useSafeAreaInsets} from "react-native-safe-area-context";
 const WIDTH = 240;
 
@@ -44,7 +44,7 @@ export function SideMenu({open, onClose}: SideMenuProps) {
                 {MENU_ITEMS.map((item) => (
                     <Pressable key={item.label} onPress={() => go(item.href)} style={styles.item}>
                         <Image source={item.icon} style={styles.icon} contentFit="contain" />
-                        <RText variant='heading'>{item.label}</RText>
+                        <Text style={textStyles.heading}>{item.label}</Text>
                     </Pressable>
 
                 ))}

@@ -34,18 +34,9 @@ export const colors = {
     cream: '#FFF6E8',      // light tag background
 }
 
-
-//const palette = {
-//     arterialNocturne: '#890206',
-//     siliconMist: '#B4EBFF',
-//     plasticPorcelain: '#FEC0E9',
-//     bleachedFlax: '#F3E5BE',
-// };
-//
-// export const colors = {
-//     ...palette,                          // keep your fun names available
-//     background: palette.bleachedFlax,
-//     text: palette.arterialNocturne,
-//     accent: palette.plasticPorcelain,
-//     highlight: palette.siliconMist,
-// };
+export const textStyles = {
+    title:   { fontFamily: fonts.grapeSoda, fontSize: 34, color: colors.arterialNocturne },
+    heading: { fontFamily: fonts.grapeSoda, fontSize: 22, color: colors.arterialNocturne },
+    body:    { fontFamily: fonts.bodyF,      fontSize: 16, color: colors.arterialNocturne },
+    caption: { fontFamily: fonts.bodyF,      fontSize: 12, color: colors.arterialNocturne, opacity: 0.7 },
+} as const;

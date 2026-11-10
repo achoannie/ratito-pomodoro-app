@@ -5,6 +5,7 @@ import {View, StyleSheet, ScrollView, Pressable, Text, Animated, Easing, Platfor
 import {Mood, PetId, PETS} from "@/pets/pets";
 import { colors, fonts } from "@/theme/theme";
 import { StrawberryCounter } from '@/components/ratito/StrawberryCounter';
+import {useSounds} from "@/sound/useSound";
 
 // const CATEGORIES = ['Study', 'Work', 'Read'];
 const DURATION = [25, 30, 60, 90];
@@ -60,6 +61,7 @@ const formatTime = (seconds: number) => {
     return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
 };
 
+
 export default function HomeScreen() {
     // const [category, setCategory] = useState('Study');
     const [minutes, setMinutes] = useState(25);
@@ -69,7 +71,9 @@ export default function HomeScreen() {
     const [petId, setPetId] = useState<PetId>('michi'); //default pet, can change later
     const endAt = useRef(0);
     const pet = PETS[petId];
+    const play = useSounds();
     const nextPet = () => {
+        play('switchPet');
         const i = PET_IDS.indexOf(petId);
         setPetId(PET_IDS[(i + 1) % PET_IDS.length]);
     }
@@ -103,12 +107,17 @@ export default function HomeScreen() {
         setTimeLeft(m*60);
     }
     const start = () => {
+        play('start');
         endAt.current = Date.now() + timeLeft * 1000;
         setReaction(null);
         setStatus('running');
     }
-    const pause = () => {setStatus('paused');}
+    const pause = () => {
+        play('pause');
+        setStatus('paused');
+    }
     const giveUp = () => {
+        play('giveUp');
         setStatus('idle');
         setReaction('sad');
         setTimeLeft(minutes*60);

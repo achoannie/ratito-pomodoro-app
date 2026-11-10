@@ -201,9 +201,15 @@ so I built a small side tool for it: **[pixel-up](https://github.com/achoannie/p
 - [x] Pixel pets with mood animations and a pet switcher
 - [x] Strawberry counter and Ratitude hearts (UI)
 - [x] Side menu with placeholder pages
-- [ ] Installable PWA (manifest, icons, offline)
+- [x] Installable PWA (manifest, icons, offline)
+- [x] quick login without registering for dev|tester|teacher in case supabase *pause*
+- [x] Sounds effect for pomodoro activities: start, pause, finish, give up; and switch pet button on home page
+- [x] Setting screen: see your account info (dummy avatar/account name & email, volume setting) and log out
+- [x] Installable PWA (manifest, service worker, offline) — still wearing the starter's default icon, wupsi... (｡•́︿•̀｡) a Ratito icon is coming in phase 2
 
 **Phase 2 — Final app (native iOS & Android)**
+- [ ] app icon / logo
+- [ ] more sprites for mood
 - [ ] add pixel-up in `/script`: animated GIF output, then use it for all pet sprites
 - [ ] Save strawberries, Ratitude and focus history in Supabase
 - [ ] Rewards: earn strawberries and Ratitude when a session finishes
@@ -211,8 +217,6 @@ so I built a small side tool for it: **[pixel-up](https://github.com/achoannie/p
 - [ ] More moods per pet (focus, resting, happy, sad)
 - [ ] Friends: add friends and see who's focusing
 - [ ] Notes: leave a friend a message, delivered after their session
-- [ ] Settings: account, sounds, theme
-- [ ] Sound effects
 - [ ] End-to-end tests (Cypress)
 
 **Later / ideas**
@@ -273,6 +277,7 @@ Project Link: [ratito-pomodoro-app](https://github.com/achoannie/ratito-pomodoro
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 * Sound Effect: 
   - make your own sound effect: [sfxr.me](https://sfxr.me/)
+  - free bubble effects: [pixabay.com](https://pixabay.com/sound-effects/search/bubble/)
 * [Some symbol effects inspo ✩₊˚୨☆( ◜⩊◝ )☆୧˚₊✩](https://kaomojis.jp)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
