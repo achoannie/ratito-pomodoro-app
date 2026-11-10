@@ -1,7 +1,6 @@
 <a id="readme-top"></a>
 
 <!-- PROJECT LOGO -->
-<br />
 <div align="center">
   <h2 align="center">｡˚✦⋆ Ratito ⋆✦˚｡</h2>
 
