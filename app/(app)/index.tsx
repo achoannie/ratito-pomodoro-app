@@ -4,12 +4,10 @@ import {Image} from "expo-image";
 import {View, StyleSheet, ScrollView, Pressable, Text, Animated, Easing, Platform} from "react-native";
 import {Mood, PetId, PETS} from "@/pets/pets";
 import { colors, fonts } from "@/theme/theme";
-import {SideMenu} from "@/components/SideMenu";
-import {RText} from "@/components/ratito/RText";
 import { StrawberryCounter } from '@/components/ratito/StrawberryCounter';
 
-const CATEGORIES = ['Study', 'Work', 'Read'];
-const DURATION = [25, 30, 60, 90];
+// const CATEGORIES = ['Study', 'Work', 'Read'];
+// const DURATION = [25, 30, 60, 90];
 const PET_IDS = Object.keys(PETS) as PetId[];
 type Status = 'idle' | 'paused' | 'running';
 type Reaction = 'happy' | 'sad' | null;
@@ -62,9 +60,8 @@ const formatTime = (seconds: number) => {
 };
 
 export default function HomeScreen() {
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [category, setCategory] = useState('Study');
-    const [minutes, setMinutes] = useState(25);
+    // const [category, setCategory] = useState('Study');
+    const [minutes] = useState(25);
     const [status, setStatus] = useState<Status>('idle');
     const [timeLeft, setTimeLeft] = useState(25 * 60);
     const [reaction, setReaction] = useState<Reaction>(null);
@@ -100,29 +97,26 @@ export default function HomeScreen() {
         return () => clearTimeout(id);
     }, [reaction]);
 
-    const pickDuration = (m:number) => {
-        setMinutes(m);
-        setTimeLeft(m*60);
-    }
-    const start = () => {
-        endAt.current = Date.now() + timeLeft * 1000;
-        setReaction(null);
-        setStatus('running');
-    }
-    const pause = () => {setStatus('paused');}
-    const giveUp = () => {
-        setStatus('idle');
-        setReaction('sad');
-        setTimeLeft(minutes*60);
-    }
+    // const pickDuration = (m:number) => {
+    //     setMinutes(m);
+    //     setTimeLeft(m*60);
+    // }
+    // const start = () => {
+    //     endAt.current = Date.now() + timeLeft * 1000;
+    //     setReaction(null);
+    //     setStatus('running');
+    // }
+    // const pause = () => {setStatus('paused');}
+    // const giveUp = () => {
+    //     setStatus('idle');
+    //     setReaction('sad');
+    //     setTimeLeft(minutes*60);
+    // }
     const isIdle = status === 'idle';
 
     return (
         <View style={styles.root}>
             <View style={styles.topBar}>
-                <Pressable onPress={() => setMenuOpen(true)} hitSlop={12}>
-                    <RText variant="heading">☰</RText>
-                </Pressable>
                 <StrawberryCounter amount={67}/>
             </View>
             {/*pet box*/}
@@ -146,7 +140,6 @@ export default function HomeScreen() {
                 </Stack>
             </ScrollView>
             {/**/}
-            <SideMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
         </View>
     )
 }
