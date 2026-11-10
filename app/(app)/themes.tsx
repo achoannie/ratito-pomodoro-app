@@ -1,15 +1,16 @@
 import {StyleSheet, View} from "react-native";
-import {RText} from "@/components/ratito/RText";
+import ComingSoon from "@/components/ratito/ComingSoon";
 
 export default function Themes() {
     return (
         <View style={styles.container}>
-            <RText variant="caption" style={styles.text}>Fun themes coming your way.</RText>
+            <ComingSoon message={`Fun themes coming your way.`}/>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-    text: { textAlign: 'center' }
+    text: { textAlign: 'center' },
+    gif: { width: 200, height: 200 },
 })

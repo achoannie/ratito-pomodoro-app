@@ -6,11 +6,11 @@ export const PETS = {
     perrito: {
         name: 'Perrito',
         gifs: {
-            idle: require('../../assets/pets/perrito/perrito_idle_tight.gif'),
-            focus: require('../../assets/pets/perrito/perrito_idle.gif'),
-            resting: require('../../assets/pets/perrito/perrito_idle.gif'),
-            happy: require('../../assets/pets/perrito/perrito_idle.gif'),
-            sad: require('../../assets/pets/perrito/perrito_idle.gif'),
+            idle: require('../../assets/pets/perrito/perrito_idle.gif'),
+            focus: require('../../assets/pets/perrito/perrito_idle_blurry.gif'),
+            resting: require('../../assets/pets/perrito/perrito_idle_blurry.gif'),
+            happy: require('../../assets/pets/perrito/perrito_idle_blurry.gif'),
+            sad: require('../../assets/pets/perrito/perrito_idle_blurry.gif'),
         } satisfies Record<Mood, Pet>,
     },
     michi: {

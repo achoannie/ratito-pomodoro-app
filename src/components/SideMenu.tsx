@@ -1,17 +1,21 @@
 import {Href, router} from "expo-router";
 import { useRef, useEffect} from "react";
 import { colors } from "@/theme/theme";
-import {StyleSheet, Animated, Modal, Pressable, View, Platform} from "react-native";
+import { Image } from 'expo-image';
+import {StyleSheet, Animated, Modal, Pressable, View, Platform, ImageSourcePropType} from "react-native";
 import {RText} from "@/components/ratito/RText";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
 const WIDTH = 240;
-export const MENU_ITEMS: {label: string, icon: string, href: Href}[] =[
-    { label: 'Focus', icon: '⏳', href: '/' },
-    { label: 'Profile', icon: '🌼', href: '/profile' },
-    { label: 'Shelter', icon: '🏡', href: '/shelter' },
-    { label: 'Friends', icon: '💌', href: '/friends' },
-    { label: 'Themes', icon: '🎨', href: '/themes' },
-    { label: 'Settings', icon: '⚙︎', href: '/settings' },
+
+const dummyIcon = require("../../assets/icons/strawberry.png");
+
+export const MENU_ITEMS: {label: string, icon: ImageSourcePropType, href: Href}[] =[
+    { label: 'Focus', icon: dummyIcon, href: '/' },
+    { label: 'Profile', icon: dummyIcon, href: '/profile' },
+    { label: 'Shelter', icon: dummyIcon, href: '/shelter' },
+    { label: 'Friends', icon: dummyIcon, href: '/friends' },
+    { label: 'Themes', icon: dummyIcon, href: '/themes' },
+    { label: 'Settings', icon: dummyIcon, href: '/settings' },
 ]
 interface SideMenuProps {
     open: boolean;
@@ -38,8 +42,8 @@ export function SideMenu({open, onClose}: SideMenuProps) {
             <Pressable style={styles.scrim} onPress={onClose} testID='menu-scrim' />
             <View style={[styles.panel, { paddingTop: insets.top + 32 }]}>
                 {MENU_ITEMS.map((item) => (
-                    <Pressable key={item.label} onPress={() => go(item.href)} testID={`menu-${item.label.toLowerCase()}`}>
-                        <RText variant='body' style={styles.icon}>{item.icon}</RText>
+                    <Pressable key={item.label} onPress={() => go(item.href)} style={styles.item}>
+                        <Image source={item.icon} style={styles.icon} contentFit="contain" />
                         <RText variant='heading'>{item.label}</RText>
                     </Pressable>
 
@@ -57,10 +61,16 @@ const styles = StyleSheet.create({
         left: 0,
         width: WIDTH,
         paddingHorizontal: 24,
+        gap: 8,
         backgroundColor: colors.bleachedFlax,
         borderRightWidth: 2,
         borderColor: colors.arterialNocturne,
     },
-    item: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 8 },
-    icon: { width: 28 },
+    item: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 14,
+        paddingVertical: 12,
+    },
+    icon: { width: 16, height: 16 },
 });

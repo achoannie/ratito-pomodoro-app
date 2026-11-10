@@ -73,7 +73,7 @@ The design should be **calm, cozy and whimsical**: hand-drawn pixel art, soft co
     <table>
     <tr>
         <td align="center">
-        <img src="assets/pets/perrito/perrito_idle_tight.gif" width="128" alt="Perrito"><br>
+        <img src="assets/pets/perrito/perrito_idle.gif" width="128" alt="Perrito"><br>
         <b>Perrito</b>
         </td>
         <td align="center">

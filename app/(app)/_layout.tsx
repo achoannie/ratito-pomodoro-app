@@ -1,11 +1,12 @@
 import { Redirect, Stack } from 'expo-router';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View, Text } from 'react-native';
 import { useState } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { hasSeenWelcome } from '@/state/session';
 import { useAuthStore } from '@/state/useAuthStore';
-import { RText } from '@/components/ratito/RText';
 import { SideMenu } from '@/components/SideMenu';
+import {colors} from "@/theme/theme";
+
 
 export default function AppLayout() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -22,9 +23,10 @@ export default function AppLayout() {
             <Pressable
                 onPress={() => setMenuOpen(true)}
                 hitSlop={12}
-                style={[styles.menuButton, { top: insets.top + 16 }]}
+                style={[styles.menuButton, { top: insets.top + 12 }]}
+                accessibilityLabel="Open menu"
             >
-                <RText variant="heading">☰</RText>
+                <Text style={styles.menuIcon}>☰</Text>
             </Pressable>
 
             <SideMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
@@ -36,7 +38,12 @@ const styles = StyleSheet.create({
     root: { flex: 1 },
     menuButton: {
         position: 'absolute',
-        left: 24,
+        left: 16,
         zIndex: 10,
+        width: 48,
+        height: 48,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
+    menuIcon: { fontSize: 32, color: colors.arterialNocturne },
 });
