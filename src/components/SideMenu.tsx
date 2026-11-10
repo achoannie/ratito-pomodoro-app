@@ -11,10 +11,10 @@ const dummyIcon = require("../../assets/icons/strawberry.png");
 
 export const MENU_ITEMS: {label: string, icon: ImageSourcePropType, href: Href}[] =[
     { label: 'Focus', icon: dummyIcon, href: '/' },
-    { label: 'Profile', icon: dummyIcon, href: '/profile' },
-    { label: 'Shelter', icon: dummyIcon, href: '/shelter' },
-    { label: 'Friends', icon: dummyIcon, href: '/friends' },
-    { label: 'Themes', icon: dummyIcon, href: '/themes' },
+    { label: 'Profile (wip)', icon: dummyIcon, href: '/profile' },
+    { label: 'Shelter (wip)', icon: dummyIcon, href: '/shelter' },
+    { label: 'Friends (wip)', icon: dummyIcon, href: '/friends' },
+    { label: 'Themes (wip)', icon: dummyIcon, href: '/themes' },
     { label: 'Settings', icon: dummyIcon, href: '/settings' },
 ]
 interface SideMenuProps {

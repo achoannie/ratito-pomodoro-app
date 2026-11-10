@@ -271,7 +271,8 @@ Project Link: [ratito-pomodoro-app](https://github.com/achoannie/ratito-pomodoro
 * Fonts: Grape Soda and Kiwi Soda ([DaFont](https://www.dafont.com)), [DotGothic16](https://fonts.google.com/specimen/DotGothic16)
 * Inspiration: Forest, Focus Tree and cozy old-web pages like [cinni.net](https://cinni.net)
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
-* Sound Effect: sfxr.me
+* Sound Effect: 
+  - make your own sound effect: [sfxr.me](https://sfxr.me/)
 * [Some symbol effects inspo ✩₊˚୨☆( ◜⩊◝ )☆୧˚₊✩](https://kaomojis.jp)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
