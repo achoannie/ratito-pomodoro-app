@@ -61,17 +61,27 @@ Ratito turns focus time into **time spent with/for someone**:
 
 * **Focus sessions** — pick a duration and what you're focusing on (study, work, read…), then start the timer.
 * **A pixel companion? pet? competnion!** — your companion (Perrito, Michi, …) sits with you and reacts to what you do: it focuses with you, rests when you pause, celebrates when you finish, and comforts you when you give up.
-* **Strawberries** — the in-app currency you and your companion earn while focusing, later used for skins, decor and new pets.
-* **Ratitude** — every companion has its own Ratitude (shown as hearts) that grows the more time you spend together. *(The name came from a dream.)*
+* <img src="assets/icons/strawberry.png" width="16" alt=""> **Strawberries** — the in-app currency you and your companion earn while focusing, later used for skins, decor and new pets.
+* <img src="assets/icons/heart_full.png" width="16" alt=""> **Ratitude** — every companion has its own Ratitude (shown as hearts) that grows the more time you spend together. *(The name came from a dream.)*
 * **Not alone** *(planned)* — add friends, see who's focusing, and leave each other little notes that are delivered when a session ends.
 
 The design should be **calm, cozy and whimsical**: hand-drawn pixel art, soft colors, slow animations — a focus app that feels like a small, cute place rather than a bland productivity dashboard.
 
 ## Meet the companion (more companions in production)
 <div align="center">
-  <img src="assets/pets/perrito/perrito_idle_tight.gif" alt="Perrito" width="96" height="96">
-  <img src="assets/pets/michi/michi_idle.gif" alt="Michi" width="96" height="96">
-  <!-- more to go -->
+<table>
+  <tr>
+    <td align="center">
+      <img src="assets/pets/perrito/perrito_idle_tight.gif" width="128" alt="Perrito"><br>
+      <b>Perrito</b>
+    </td>
+    <td align="center">
+      <img src="assets/pets/michi/michi_idle.gif" width="128" alt="Michi"><br>
+      <b>Michi</b>
+    </td>
+  </tr>
+</table>
+
 </div>
 
 
@@ -172,7 +182,7 @@ so I built a small side tool for it: **[pixel-up](https://github.com/achoannie/p
    <!-- Demo account for testing: email `demo@...` / password `...` (fill in once created) -->
 3. **Home** — choose your companion with the ⇄ button, pick a duration and what you're focusing on, and press **Start**.
 4. While the timer runs, your pet focuses with you. **Pause** to take a little break, **Resume** to continue, or **Give up** (no guilt — your pet just says *let's try again later ♡*).
-5. Finish a session to earn 🍓 strawberries and grow your pet's ♡ Ratitude.
+5. Finish a session to earn <img src="assets/icons/strawberry.png" height="20" alt="strawberry"> strawberries and grow your pet's ♡ Ratitude.
 6. Open the ☰ menu to visit the other pages and log out from **Settings**.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
