@@ -68,10 +68,13 @@ export default function HomeScreen() {
     const [status, setStatus] = useState<Status>('idle');
     const [timeLeft, setTimeLeft] = useState(25 * 60);
     const [reaction, setReaction] = useState<Reaction>(null);
-    const [petId] = useState<PetId>('michi'); //default pet, can change later
+    const [petId, setPetId] = useState<PetId>('michi'); //default pet, can change later
     const endAt = useRef(0);
     const pet = PETS[petId];
-
+    const nextPet = () => {
+        const i = PET_IDS.indexOf(petId);
+        setPetId(PET_IDS[(i + 1) % PET_IDS.length]);
+    }
     const mood: Mood =
         status === 'running' ? 'focus' :
         status === 'paused'  ? 'resting' :
@@ -120,12 +123,7 @@ export default function HomeScreen() {
                 <Pressable onPress={() => setMenuOpen(true)} hitSlop={12}>
                     <RText variant="heading">☰</RText>
                 </Pressable>
-
                 <StrawberryCounter amount={67}/>
-            </View>
-            {/*top-right corner currency*/}
-            <View>
-            {/*    strawberry*/}
             </View>
             {/*pet box*/}
             <ScrollView>
@@ -137,6 +135,12 @@ export default function HomeScreen() {
                         </View>
                         <Text style={styles.petName}>{pet.name}</Text>
                     </View>
+
+                    {isIdle && (
+                        <Pressable onPress={nextPet} style={styles.switchButton} hitSlop={8} accessibilityLabel='Switch pet'>
+                            <Text style={styles.switchText}>⇄</Text>
+                        </Pressable>
+                    )}
 
                     <Text style={styles.timer}>{formatTime(timeLeft)}</Text>
                 </Stack>
@@ -185,7 +189,21 @@ const styles = StyleSheet.create({
     heart: {
         position: 'absolute',
         top: 10
-    }
+    },
+    switchButton: {
+        position: 'absolute',
+        right: 8,
+        bottom: 8,
+        width: 36,
+        height: 36,
+        borderRadius: 18,
+        borderWidth: 2,
+        borderColor: colors.arterialNocturne,
+        backgroundColor: colors.plasticPorcelain,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    switchText: { fontSize: 18, color: colors.arterialNocturne },
 })
 
 
