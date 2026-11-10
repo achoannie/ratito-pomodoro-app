@@ -182,7 +182,7 @@ so I built a small side tool for it: **[pixel-up](https://github.com/achoannie/p
    <!-- Demo account for testing: email `demo@...` / password `...` (fill in once created) -->
 3. **Home** — choose your companion with the ⇄ button, pick a duration and what you're focusing on, and press **Start**.
 4. While the timer runs, your pet focuses with you. **Pause** to take a little break, **Resume** to continue, or **Give up** (no guilt — your pet just says *let's try again later ♡*).
-5. Finish a session to earn <img src="assets/icons/strawberry.png" height="20" alt="strawberry"> strawberries and grow your pet's ♡ Ratitude.
+5. Finish a session to earn <img src="assets/icons/strawberry.png" height="16" alt="strawberry"> strawberries and grow your pet's <img src="assets/icons/heart_empty.png" width="16" alt=""> Ratitude <img src="assets/icons/heart_full.png" width="16" alt="">.
 6. Open the ☰ menu to visit the other pages and log out from **Settings**.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
