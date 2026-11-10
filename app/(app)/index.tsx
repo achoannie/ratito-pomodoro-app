@@ -7,13 +7,14 @@ import { colors, fonts } from "@/theme/theme";
 import { StrawberryCounter } from '@/components/ratito/StrawberryCounter';
 
 // const CATEGORIES = ['Study', 'Work', 'Read'];
-// const DURATION = [25, 30, 60, 90];
+const DURATION = [25, 30, 60, 90];
 const PET_IDS = Object.keys(PETS) as PetId[];
 type Status = 'idle' | 'paused' | 'running';
 type Reaction = 'happy' | 'sad' | null;
 
 const heartEmpty = require('../../assets/icons/heart_empty.png');
 const heartFull = require('../../assets/icons/heart_full.png');
+
 function WavingHeartRow({full, delay}: {full: boolean, delay: number}) {
     const bob = useRef(new Animated.Value(0)).current;
     useEffect(() => {
@@ -61,7 +62,7 @@ const formatTime = (seconds: number) => {
 
 export default function HomeScreen() {
     // const [category, setCategory] = useState('Study');
-    const [minutes] = useState(25);
+    const [minutes, setMinutes] = useState(25);
     const [status, setStatus] = useState<Status>('idle');
     const [timeLeft, setTimeLeft] = useState(25 * 60);
     const [reaction, setReaction] = useState<Reaction>(null);
@@ -97,21 +98,21 @@ export default function HomeScreen() {
         return () => clearTimeout(id);
     }, [reaction]);
 
-    // const pickDuration = (m:number) => {
-    //     setMinutes(m);
-    //     setTimeLeft(m*60);
-    // }
-    // const start = () => {
-    //     endAt.current = Date.now() + timeLeft * 1000;
-    //     setReaction(null);
-    //     setStatus('running');
-    // }
-    // const pause = () => {setStatus('paused');}
-    // const giveUp = () => {
-    //     setStatus('idle');
-    //     setReaction('sad');
-    //     setTimeLeft(minutes*60);
-    // }
+    const pickDuration = (m:number) => {
+        setMinutes(m);
+        setTimeLeft(m*60);
+    }
+    const start = () => {
+        endAt.current = Date.now() + timeLeft * 1000;
+        setReaction(null);
+        setStatus('running');
+    }
+    const pause = () => {setStatus('paused');}
+    const giveUp = () => {
+        setStatus('idle');
+        setReaction('sad');
+        setTimeLeft(minutes*60);
+    }
     const isIdle = status === 'idle';
 
     return (
@@ -128,18 +129,43 @@ export default function HomeScreen() {
                             <Hearts level={3}/>
                         </View>
                         <Text style={styles.petName}>{pet.name}</Text>
+                        {isIdle && (
+                            <Pressable onPress={nextPet} style={styles.switchButton} hitSlop={8} accessibilityLabel='Switch pet'>
+                                <Text style={styles.switchText}>⇄</Text>
+                            </Pressable>
+                        )}
                     </View>
 
+                    <Text style={styles.timer}>{formatTime(timeLeft)}</Text>
+
                     {isIdle && (
-                        <Pressable onPress={nextPet} style={styles.switchButton} hitSlop={8} accessibilityLabel='Switch pet'>
-                            <Text style={styles.switchText}>⇄</Text>
-                        </Pressable>
+                        <View style={styles.row}>
+                            {DURATION.map((m) => (
+                                <Pressable key={m} onPress={() => pickDuration(m)}
+                                           style={[styles.chip, m == minutes && styles.chipOn]}
+                                           >
+                                    <Text style={styles.chipText}>{m} min</Text>
+                                </Pressable>
+                            ))}
+                        </View>
                     )}
 
-                    <Text style={styles.timer}>{formatTime(timeLeft)}</Text>
+                    <View style={styles.row}>
+                        {status === 'idle' && (
+                            <Pressable onPress={start} style={styles.button}><Text style={styles.buttonText}>Start</Text></Pressable>
+                        )}
+                        {status === 'running' && (
+                            <Pressable onPress={pause} style={styles.button}><Text style={styles.buttonText}>Pause</Text></Pressable>
+                        )}
+                        {status === 'paused' && (
+                            <>
+                                <Pressable onPress={start} style={styles.button}><Text style={styles.buttonText}>Resume</Text></Pressable>
+                                <Pressable onPress={giveUp} style={[styles.button, styles.quiet]}><Text style={styles.buttonText}>Give up</Text></Pressable>
+                            </>
+                        )}
+                    </View>
                 </Stack>
             </ScrollView>
-            {/**/}
         </View>
     )
 }
@@ -166,7 +192,7 @@ const styles = StyleSheet.create({
     },
     topBar: {
         flexDirection: 'row',
-        justifyContent: 'space-between',   // ☰ left, strawberries right
+        justifyContent: 'flex-end',   // ☰ left, strawberries right
         alignItems: 'center',
         paddingHorizontal: 24,
         paddingTop: 16,
@@ -197,6 +223,22 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     switchText: { fontSize: 18, color: colors.arterialNocturne },
+    row: { flexDirection: 'row', justifyContent: 'center', gap: 12, flexWrap: 'wrap' },
+    button: {
+        minWidth: 140, paddingVertical: 12, alignItems: 'center', borderRadius: 28,
+        borderWidth: 2, borderColor: colors.arterialNocturne, backgroundColor: colors.plasticPorcelain,
+    },
+    quiet: { backgroundColor: 'transparent' },
+    buttonText: { fontFamily: fonts.grapeSoda, fontSize: 22, color: colors.arterialNocturne },
+    chip: {
+        paddingHorizontal: 14,
+        paddingVertical: 6,
+        borderRadius: 14,
+        borderWidth: 1.5,
+        borderColor: colors.arterialNocturne,
+    },
+    chipOn: { backgroundColor: colors.plasticPorcelain },
+    chipText: { fontFamily: fonts.grapeSoda, fontSize: 20, color: colors.arterialNocturne },
 })
 
 

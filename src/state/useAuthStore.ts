@@ -9,6 +9,7 @@ interface AuthState {
   login: (email: string, password: string) => Promise<void>;
   register: (name: string, email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
+  devLogin: () => void;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
@@ -39,4 +40,10 @@ export const useAuthStore = create<AuthState>((set) => ({
     await logoutService();
     set({ user: null, isAuthenticated: false });
   },
+  devLogin: ()=> {
+    set({
+      user: {id: 'demo', name: "Demo", email: "demo@ratito.app", token: 'demo-token'},
+      isAuthenticated: true,
+    })
+  }
 }));

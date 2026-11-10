@@ -1,13 +1,10 @@
 import {StyleSheet, View} from "react-native";
-import {RText} from "@/components/ratito/RText";
-import {Image} from "expo-image";
+import ComingSoon from "@/components/ratito/ComingSoon";
 
 export default function Friends() {
     return (
         <View style={styles.container}>
-            <RText variant="caption" style={styles.text}>Study buddies and little notes coming soon.</RText>
-            <Image source={require('../../assets/temporaries/pikachuunderconstruction.gif')}
-                   style={styles.gif} contentFit="contain"/>
+            <ComingSoon message={`Study buddies and little notes coming soon.`}/>
         </View>
     )
 }

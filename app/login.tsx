@@ -1,17 +1,16 @@
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import {Pressable, StyleSheet, View, Text as RNText} from 'react-native';
 import { Link, router} from 'expo-router';
 import { useAuthStore } from '@/state/useAuthStore';
 import { InputField } from '@/components/primitives';
 import { StyledButton } from '@/components/StyledButton';
-import { Stack } from '@/components/primitives';
-import { Text } from '@/components/primitives';
+import { Stack, Text } from '@/components/primitives';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const { login, isLoading } = useAuthStore();
+  const { login, isLoading, devLogin } = useAuthStore();
 
   const handleLogin = async () => {
     setError('');
@@ -51,12 +50,20 @@ export default function LoginScreen() {
         <Link href="/register" style={styles.link} testID="to-register">
           No account yet? Let's sign up
         </Link>
-        <Link href="/comingsoon" style={styles.link} testID="forgor-password">
+        <Link href="/forgot-password" style={styles.link} testID="forgot-password">
           Wupsi i forgot my password
         </Link>
-        <Link href="/comingsoon" style={styles.link} testID="forgor-username">
+        <Link href="/forgot-username" style={styles.link} testID="forgot-username">
           Upsi i forgot my username
         </Link>
+        {__DEV__ && (
+            <Pressable onPress={() => {
+              devLogin();
+              router.replace('/');
+            }}>
+              <RNText style={styles.link}>Skip login step for demo (for dev | teacher)</RNText>
+            </Pressable>
+        )}
       </Stack>
     </View>
   );

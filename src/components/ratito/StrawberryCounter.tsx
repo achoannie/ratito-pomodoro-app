@@ -28,6 +28,6 @@ const styles = StyleSheet.create({
         borderColor: colors.berryInk,
         borderRadius: 6,
     },
-    amount: { color: colors.berryInk, fontFamily: fonts.grapeSoda },
+    amount: { color: colors.berryInk, fontFamily: fonts.grapeSoda, fontSize: 20, },
     icon: { position: 'absolute', left: 0, width: 32, height: 32 },
 });
