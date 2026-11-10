@@ -23,7 +23,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#meet-the-companion">Meet the companions</a></li>
+        <li><a href="#meet-the-companions">Meet the companions</a></li>
         <li><a href="#target-audience">Target Audience</a></li>
         <li><a href="#competitors">Competitors</a></li>
         <li><a href="#built-with">Built With</a></li>
@@ -272,7 +272,7 @@ Project Link: [ratito-pomodoro-app](https://github.com/achoannie/ratito-pomodoro
 * Inspiration: Forest, Focus Tree and cozy old-web pages like [cinni.net](https://cinni.net)
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 * Sound Effect: sfxr.me
-* [Some symbol effects inspo ✩₊˚୨☆( ◜⩊◝ )☆୧˚₊✩](kaomojis.jp)
+* [Some symbol effects inspo ✩₊˚୨☆( ◜⩊◝ )☆୧˚₊✩](https://kaomojis.jp)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
