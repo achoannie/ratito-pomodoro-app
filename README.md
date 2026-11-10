@@ -23,6 +23,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#meet-the-companion">Meet the companions</a></li>
         <li><a href="#target-audience">Target Audience</a></li>
         <li><a href="#competitors">Competitors</a></li>
         <li><a href="#built-with">Built With</a></li>
@@ -66,22 +67,24 @@ Ratito turns focus time into **time spent with/for someone**:
 
 The design should be **calm, cozy and whimsical**: hand-drawn pixel art, soft colors, slow animations — a focus app that feels like a small, cute place rather than a bland productivity dashboard.
 
-## Meet the companion (more companions in production)
+### Meet the companions
+*More companions in production (✧˶˘ ᵕ ˘˶)*
 <div align="center">
-<table>
-  <tr>
-    <td align="center">
-      <img src="assets/pets/perrito/perrito_idle_tight.gif" width="128" alt="Perrito"><br>
-      <b>Perrito</b>
-    </td>
-    <td align="center">
-      <img src="assets/pets/michi/michi_idle.gif" width="128" alt="Michi"><br>
-      <b>Michi</b>
-    </td>
-  </tr>
-</table>
-
+    <table>
+    <tr>
+        <td align="center">
+        <img src="assets/pets/perrito/perrito_idle_tight.gif" width="128" alt="Perrito"><br>
+        <b>Perrito</b>
+        </td>
+        <td align="center">
+        <img src="assets/pets/michi/michi_idle.gif" width="128" alt="Michi"><br>
+        <b>Michi</b>
+        </td>
+    </tr>
+    </table>
 </div>
+
+Ratitude: <img src="assets/icons/heart_full.png" width="16"><img src="assets/icons/heart_full.png" width="16"><img src="assets/icons/heart_full.png" width="16"><img src="assets/icons/heart_empty.png" width="16"><img src="assets/icons/heart_empty.png" width="16">
 
 
 ### Target Audience
