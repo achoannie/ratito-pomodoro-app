@@ -8,6 +8,11 @@
     <em>focus un ratito</em> — a cozy pixel-pet focus timer, so you never have to study alone.
     <br />
     <br />
+    <a href="https://ratito-pomodoro-app.vercel.app"><strong>✦ Try the live demo ✦</strong></a>
+    <br />
+    <sub>demo login in <a href="#usage">Usage</a></sub>
+    <br />
+    <br />
     <a href="#getting-started"><strong>Run it locally »</strong></a>
     ·
     <a href="#usage">How it works</a>
