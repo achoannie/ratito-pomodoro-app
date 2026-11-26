@@ -18,6 +18,8 @@
     <a href="#usage">How it works</a>
     ·
     <a href="#roadmap">Roadmap</a>
+    ·
+    <a href="ART.md">Art &amp; sprites ✎</a>
   </p>
 </div>
 
@@ -32,7 +34,7 @@
         <li><a href="#target-audience">Target Audience</a></li>
         <li><a href="#competitors">Competitors</a></li>
         <li><a href="#built-with">Built With</a></li>
-        <li><a href="#art-workflow">Art workflow</a></li>
+        <li><a href="#art--sprites">Art &amp; sprites</a></li>
       </ul>
     </li>
     <li>
@@ -64,8 +66,9 @@
 Studying or working alone for hours can feel lonely, boring and hard to keep up. Some pomodoro apps only track time.
 Ratito turns focus time into **time spent with/for someone**:
 
-* **Focus sessions** — pick a duration and what you're focusing on (study, work, read…), then start the timer.
-* **A pixel companion? pet? competnion!** — your companion (Perrito, Michi, …) sits with you and reacts to what you do: it focuses with you, rests when you pause, celebrates when you finish, and comforts you when you give up.
+* **Three timer modes** — **Timer** (count down from 25/30/60/90 min), **Stopwatch** (count up until you stop) and **Pomodoro** (pick a focus + break length; it switches between them by itself, or asks you first if you tick *"Ask me before each switch"*).
+* **A pixel companion? pet? competnion!** — your companion (Perrito, Michi, …) lives in its own little pixel room on the focus page. It reads while you focus, plays with its toys when you pause, and naps during Pomodoro breaks.
+* **Pet notices** — when a session ends, a little pixel window pops up with your companion: proud and happy when you finish (*"You nailed it!"* and other random messages), a bit sad but still loving when you give up.
 * <img src="assets/icons/strawberry.png" width="16" alt=""> **Strawberries** — the in-app currency you and your companion earn while focusing, later used for skins, decor and new pets.
 * <img src="assets/icons/heart_full.png" width="16" alt=""> **Ratitude** — every companion has its own Ratitude (shown as hearts) that grows the more time you spend together. *(The name came from a dream.)*
 * **Not alone** *(planned)* — add friends, see who's focusing, and leave each other little notes that are delivered when a session ends.
@@ -88,6 +91,9 @@ The design should be **calm, cozy and whimsical**: hand-drawn pixel art, soft co
     </tr>
     </table>
 </div>
+
+Each companion has two kinds of sprites: **front-facing** ones for the notices (idle, happy, sad) and a **top-down room** for the focus page.
+Curious how they're made? → **[Art & sprites process](ART.md)**
 
 Ratitude: <img src="assets/icons/heart_full.png" width="16"><img src="assets/icons/heart_full.png" width="16"><img src="assets/icons/heart_full.png" width="16"><img src="assets/icons/heart_empty.png" width="16"><img src="assets/icons/heart_empty.png" width="16">
 
@@ -121,23 +127,20 @@ Both are established apps backed by bigger teams or organization that have been 
 * **Expo Router** — file-based navigation
 * **Zustand** — app state (auth store)
 * **expo-image** — animated pixel-art GIFs
-* **Clip Studio Paint** — all pet and icon artwork, drawn by me
+* **Clip Studio Paint** & **Aseprite** — all pets, rooms and icons, drawn by me
 * **[pixel-up](https://github.com/achoannie/pixel-up)** — my own Rust CLI (I built during autumn break) that crops and enlarges the pixel-art sprites without blurring or breaking the original quality
 
 Runs as a **PWA** (web) and on **iOS / Android** from one codebase.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Art workflow
+### Art & sprites
 
-All sprites are hand-drawn pixel art. Clip Studio Paint blurs pixels when it enlarges animations during its exporting step,
-so I built a small side tool for it: **[pixel-up](https://github.com/achoannie/pixel-up)**.
+All the art is hand-drawn pixel art (pets, rooms, icons, notice window). The full process (canvas sizes, room layers, export script, assembled previews) lives in its own page so this README can stay about the app:
 
-1. Draw the pet in Clip Studio Paint on a small canvas (e.g. 64×64)
-2. Export the animation at **100%** (no scaling = no blur)
-3. Run pixel-up: it crops one square around the pet (the same for every frame, so it doesn't jump)
-   and enlarges every pixel into a solid block (nearest neighbor)
-4. Put the result in `assets/pets/<pet>/` and register it in `src/pets/pets.ts`
+**→ [ART.md: Art & sprites process](ART.md)**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- GETTING STARTED -->
@@ -157,8 +160,8 @@ so I built a small side tool for it: **[pixel-up](https://github.com/achoannie/p
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
-   cd repo_name
+   git clone https://github.com/achoannie/ratito-pomodoro-app.git
+   cd ratito-pomodoro-app
    ```
 2. Install packages
    ```sh
@@ -191,10 +194,11 @@ so I built a small side tool for it: **[pixel-up](https://github.com/achoannie/p
     - **Email:** `demo@ratito.app`
     - **Password:** `i-love-pompompurin`
     - *Running in dev mode (`npx expo start`)? There's also a "Skip login" button on the login screen, just in case...*
-3. **Home** — choose your companion with the ⇄ button, pick a duration and what you're focusing on, and press **Start**.
-4. While the timer runs, your pet focuses with you. **Pause** to take a little break, **Resume** to continue, or **Give up** (no guilt — your pet just says *let's try again later ♡*).
-5. Finish a session to earn <img src="assets/icons/strawberry.png" height="16" alt="strawberry"> strawberries and grow your pet's <img src="assets/icons/heart_empty.png" width="16" alt=""> Ratitude <img src="assets/icons/heart_full.png" width="16" alt="">.
-6. Open the ☰ menu to visit the other pages and log out from **Settings**.
+3. **Home** — choose your companion with the ⇄ button, then pick a mode: **Timer**, **Stopwatch** or **Pomodoro** (with focus + break length and the *"Ask me before each switch"* checkbox). Press **Start**.
+4. While the timer runs, your pet reads in its room. **Pause** and it plays with its toys, **Resume** to continue. In Pomodoro it naps in its box during breaks.
+5. **Finish** (or let the timer run out) and a notice pops up with your happy pet. **Give up** and you get the sad-but-still-loving version (no guilt ♡).
+6. Finish a session to earn <img src="assets/icons/strawberry.png" height="16" alt="strawberry"> strawberries and grow your pet's <img src="assets/icons/heart_empty.png" width="16" alt=""> Ratitude <img src="assets/icons/heart_full.png" width="16" alt="">.
+7. Open the ☰ menu to visit the other pages and log out from **Settings**.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -217,13 +221,20 @@ so I built a small side tool for it: **[pixel-up](https://github.com/achoannie/p
 - [x] Installable PWA (manifest, service worker, offline) — still wearing the starter's default icon, wupsi... (｡•́︿•̀｡) a Ratito icon is coming in phase 2
 
 **Phase 2 — Final app (native iOS & Android)**
+- [x] New home idea: front-facing sprites for notices, a top-down pixel room for the focus page
+- [x] Michi's room drawn in Aseprite and exported as layers (see [ART.md](ART.md))
+- [x] Michi happy sprite + notice window art
+- [ ] Focus page shows the layered room (focus / pause / rest animations)
+- [ ] Timer modes: Timer, Stopwatch, Pomodoro (auto or ask-first switching)
+- [ ] Pet notice: happy / sad sprite with random messages
+- [ ] Perrito's room (Hispanic home, naps in a hammock)
 - [ ] app icon / logo
 - [ ] more sprites for mood
 - [ ] add pixel-up in `/script`: animated GIF output, then use it for all pet sprites
 - [ ] Save strawberries, Ratitude and focus history in Supabase
 - [ ] Rewards: earn strawberries and Ratitude when a session finishes
 - [ ] Profile: stats of how long and on what you focused
-- [ ] More moods per pet (focus, resting, happy, sad)
+- [ ] Sad sprites for both pets, happy sprite for Perrito
 - [ ] Friends: add friends and see who's focusing
 - [ ] Notes: leave a friend a message, delivered after their session
 - [ ] End-to-end tests (Cypress)
@@ -231,6 +242,7 @@ so I built a small side tool for it: **[pixel-up](https://github.com/achoannie/p
 **Later / ideas**
 - [ ] Shop: skins and decor for strawberries
 - [ ] Shelter: a cozy room with all your pets
+- [ ] Room decor as rewards (each decor is already its own layer, ready to unlock)
 - [ ] More pets (bird, hamster, fish) and seasonal skins
 - [ ] Daily check-in rewards and gentle streaks
 - [ ] Gacha for rare pets and outfits
@@ -251,14 +263,20 @@ app/                  screens (Expo Router: every file is a page)
     _layout.tsx       auth gate + ☰ menu
     index.tsx         Home: pet + focus timer
     settings.tsx      settings + log out
-assets/               fonts, pixel-art pets and icons
+assets/
+  pets/               front-facing pet sprites (notices)
+  rooms/<pet>/        room layers (PNG) + pet animations (GIF), all 330×330
+  notice/             notice window art
+  icons/, fonts/, sounds/
 src/
-  components/         reusable UI (counter, hearts, side menu, …)
+  components/         reusable UI (room scene, counter, hearts, side menu, …)
+  rooms/rooms.ts      which layers each pet's room has, in stacking order
   lib/supabase.ts     Supabase connection
   pets/pets.ts        pet catalog (names + mood animations)
   services/           talks to Supabase (auth)
   state/              app state (auth store, session)
   theme/              colors and fonts
+ART.md                how the art and sprites are made
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -280,7 +298,7 @@ Project Link: [ratito-pomodoro-app](https://github.com/achoannie/ratito-pomodoro
 ## Acknowledgments
 
 * [UCLL Mobile Applications starter code](https://github.com/ucllmobileapplications/boilerplate) - **[Niels Jacobs](https://github.com/NielsJacobsDev)**
-* GIF and assets: drawn by **[Annie](https://github.com/achoannie)**
+* GIF and assets: drawn by **[Annie](https://github.com/achoannie)** in Clip Studio Paint and [Aseprite](https://www.aseprite.org)
 * Fonts: Grape Soda and Kiwi Soda ([DaFont](https://www.dafont.com)), [DotGothic16](https://fonts.google.com/specimen/DotGothic16)
 * Inspiration: Forest, Focus Tree and cozy old-web pages like [cinni.net](https://cinni.net)
 * [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
